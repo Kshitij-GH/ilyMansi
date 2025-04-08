@@ -1,88 +1,71 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>For Mansi</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom right, #ffe6f0, #ffe0cc);
-      color: #333;
+      background-color: #fff0f5;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      overflow-x: hidden;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
     }
-    .container {
+    #locked, #unlocked {
+      display: none;
       text-align: center;
-      max-width: 800px;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    #locked {
+      display: block;
+    }
+    .hint {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-size: 0.9em;
+      color: #888;
+    }
+    input {
+      padding: 8px;
+      font-size: 1em;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      margin-top: 10px;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
     }
     h1 {
-      font-size: 3rem;
-      color: #ff66a3;
-    }
-    p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-    }
-    .heart {
-      font-size: 3rem;
-      color: red;
-      animation: pulse 1s infinite;
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
-    .secret {
-      margin-top: 30px;
-      background: #ffccdd;
-      padding: 15px;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .secret:hover {
-      background: #ffb3c6;
-    }
-    .hidden-message {
-      display: none;
-      margin-top: 20px;
-      font-weight: bold;
-      color: #c0392b;
+      color: #d63384;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Hi Mansi</h1>
-    <div class="heart">❤</div>
-    <p>This isn't just a website. It's my heart, turned into code.<br>
-       I know I was late with the card, the letter... but this is me trying harder than ever.<br>
-       Because you're worth every word I type and every heartbeat I miss waiting for your smile.</p><p>You're the calm to my chaos, the logic to my randomness, and the comfort in all my overthinking.<br>
-   You make me feel more seen, more loved, more alive. And for that... thank you, Mansi.</p>
-
-<div class="secret" onclick="reveal()">
-  Click here for a surprise message
-</div>
-<div id="hidden" class="hidden-message">
-  Even if I fail in words, actions, and cards — my love will always find a new way to reach you.
-  You’re my favorite what-if that became my most beautiful reality.
-</div>
-
+  <div id="locked">
+    <h2>Hey Mansi, only you can unlock this!</h2>
+    <p>Enter the date of our first date (ddmmyy):</p>
+    <input type="password" id="passwordInput" placeholder="ddmmyy" />
+    <button onclick="checkPassword()">Unlock</button>
+    <div class="hint">Hint: We met like magic in August, remember?</div>
+  </div>  <div id="unlocked">
+    <h1>BOOM!</h1>
+    <p>Congrats, you're the most beautiful woman Kshitij ever met!</p>
   </div>  <script>
-    function reveal() {
-      const hidden = document.getElementById('hidden');
-      hidden.style.display = 'block';
+    function checkPassword() {
+      const input = document.getElementById("passwordInput").value;
+      if (input === "100824") {
+        document.getElementById("locked").style.display = "none";
+        document.getElementById("unlocked").style.display = "block";
+      } else {
+        alert("Oops! Wrong date, try again with love.");
+      }
     }
   </script></body>
 </html>
